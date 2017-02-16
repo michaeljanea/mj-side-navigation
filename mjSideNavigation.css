@@ -1,0 +1,24 @@
+body {overflow-x:hidden;}
+	body.movable {position:relative;}
+	body.moved {left:220px;}
+	body.moved.right {left:auto; right:220px;}
+#sideNavigation {position:fixed; left:-220px; z-index:500; background:#111; height:100%; width:220px; overflow:auto;}
+	#sideNavigation.right {left:auto; right:-220px;}
+	#sideNavigation ul {margin:0; padding:0; background:#222;}
+	#sideNavigation li {list-style:none; position:relative;}
+	#sideNavigation a {display:block; color:#fff; border-bottom:1px solid #111; border-top:1px solid #333; padding:1em 2em 1em 1em; font-size:15px;}
+	#sideNavigation a:hover, #sideNavigation a.active {color:#999; text-decoration:none;}
+	#sideNavigation ul ul {display:none;}
+	#sideNavigation li img {position:absolute; right:.5em; top:1.2em;}
+	#sideNavigation.right.moved {left:auto; right:0;}
+	#sideNavigation.moved {left:0;}
+	#sideNavigation .logo a {padding:.5em; border:none;}
+.sideNavTrigger {font-size:26px; display:none; width:105px; color:#111; border:1px solid #ddd; padding:.2em .3em; -webkit-border-radius:3px; border-radius:3px;}
+	.sideNavTrigger:hover {opacity:.5;}
+	.sideNavTrigger img {float:left; margin-right:.5em;}
+
+@media only screen and (max-width:1024px){
+
+	.sideNavTrigger {display:block;}
+
+}

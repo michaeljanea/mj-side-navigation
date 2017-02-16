@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Side Navigation by Michael Janea</title>
+<link rel="stylesheet" type="text/css" href="mjSideNavigation.css" />
+<style type="text/css">
+* {margin:0; padding:0;}
+a {text-decoration:none;}
+#wrapper {max-width:940px; width:100%; margin:auto; padding:2em 10px; -webkit-box-sizing:border-box; box-sizing:border-box;}
+#navigation {}
+	#navigation > ul > li {float:left; width:20%;}
+	#navigation > ul > li > a {display:block; text-align:center;}
+	#navigation > ul > li:first-child > a {border-left:none;}
+	#navigation > ul > li:last-child > a {border-right:none;}
+	#navigation ul ul > li:first-child > a {border-top:none;}
+	#navigation ul ul > li:last-child > a {border-bottom:none;}
+	#navigation li {position:relative; list-style:none;}
+	#navigation a {display:block; padding:.5em; background:#24242C; color:#f1f1f1; text-shadow:none; font-size:18px; border-right:1px solid #111; border-left:1px solid #333;}
+	#navigation li:hover > a {text-decoration:none; background:#2f2f2f;}
+	#navigation ul {padding:0; margin:0;}
+	#navigation ul ul {display:none; position:absolute; left:0; top:2.4em; width:200px; z-index:100;}
+	#navigation ul ul a {font-size:14px; border:none; border-bottom:1px solid #111; border-top:1px solid #333;}
+	#navigation ul ul ul {left:190px; top:.8em;}
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+    
+    <a href="#" class="sideNavTrigger">
+    	<img src="icon_menu.png" /> Menu
+    </a>
+    
+    <div id="navigation">
+        <ul>
+            <li><a href="#">Menu 1</a>
+                <ul>
+                    <li><a href="#">Menu 1.1</a></li>
+                    <li><a href="#">Menu 1.2</a>
+                        <ul>
+                            <li><a href="#">Menu 1.2.1</a></li>
+                            <li><a href="#">Menu 1.2.2</a></li>
+                            <li><a href="#">Menu 1.2.3</a>
+                                <ul>
+                                    <li><a href="#">Menu 1.2.3.1</a></li>
+                                    <li><a href="#">Menu 1.2.3.2</a></li>
+                                    <li><a href="#">Menu 1.2.3.3</a></li>
+                                    <li><a href="#">Menu 1.2.3.4</a></li>
+                                    <li><a href="#">Menu 1.2.3.5</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Menu 1.2.4</a></li>
+                            <li><a href="#">Menu 1.2.5</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Menu 1.3</a></li>
+                    <li><a href="#">Menu 1.4</a>
+                        <ul>
+                            <li><a href="#">Menu 1.4.1</a></li>
+                            <li><a href="#">Menu 1.4.2</a></li>
+                            <li><a href="#">Menu 1.4.3</a></li>
+                            <li><a href="#">Menu 1.4.4</a></li>
+                            <li><a href="#">Menu 1.4.5</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Menu 1.5</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Menu 2</a></li>
+            <li><a href="#">Menu 3</a>
+                <ul>
+                    <li><a href="#">Menu 3.1</a></li>
+                    <li><a href="#">Menu 3.2</a></li>
+                    <li><a href="#">Menu 3.3</a></li>
+                    <li><a href="#">Menu 3.4</a></li>
+                    <li><a href="#">Menu 3.5</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Menu 4</a></li>
+            <li><a href="#">Menu 5</a>
+                <ul>
+                    <li><a href="#">Menu 5.1</a></li>
+                    <li><a href="#">Menu 5.2</a></li>
+                    <li><a href="#">Menu 5.3</a></li>
+                    <li><a href="#">Menu 5.4</a></li>
+                    <li><a href="#">Menu 5.5</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="mjSideNavigation.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#navigation').mjSideNavigation();
+	
+	$(window).on('orientationchange resize load', function(){
+	
+		var ww = $(window).width();
+		
+		if(ww > 600){
+		
+			$('#navigation').find('li').hover(
+				function(){
+					left = $(this).parent().offset().left + ($(this).parent().width() * 2);
+					left > ww ? $(this).children('ul').css({marginLeft:(parseInt($(this).children('ul').css('left')) * (-2)) + 'px'}) : '';
+					$(this).children('ul').fadeIn();
+				}, function(){
+					$(this).children('ul').stop(true, true).fadeOut();
+				}
+			);
+		
+		}
+	
+	});
+});
+</script>
+
+</body>
+</html>
